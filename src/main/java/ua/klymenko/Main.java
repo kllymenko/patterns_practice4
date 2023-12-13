@@ -4,10 +4,10 @@ package ua.klymenko;
 import ua.klymenko.DAO.EntityDAO.HomeworkDAO;
 import ua.klymenko.DAO.EntityDAO.LessonDAO;
 import ua.klymenko.DAO.EntityDAO.UserDAO;
-import ua.klymenko.DAO.EntityDAOImpl.Observer.EventManager;
-import ua.klymenko.DAO.EntityDAOImpl.Observer.Listeners.HomeworkListener;
-import ua.klymenko.DAO.EntityDAOImpl.Observer.Listeners.LessonListener;
-import ua.klymenko.DAO.EntityDAOImpl.Observer.Listeners.UserListener;
+import ua.klymenko.Observer.Publisher;
+import ua.klymenko.Observer.Notifiers.HomeworkNotifier;
+import ua.klymenko.Observer.Notifiers.LessonNotifier;
+import ua.klymenko.Observer.Notifiers.UserNotifier;
 import ua.klymenko.DAO.Factory.DAOFactory;
 import ua.klymenko.DAO.Factory.DAOFactoryImpl;
 import ua.klymenko.entity.Homework;
@@ -21,37 +21,61 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        EventManager eventManager = new EventManager();
+        Publisher publisher = new Publisher();
+
         DAOFactory factory = new DAOFactoryImpl();
-        UserDAO userDAO = factory.getUserDAO(eventManager);
-        LessonDAO lessonDAO = factory.getLessonDAO(eventManager);
-        HomeworkDAO homeworkDAO = factory.getHomeworkDAO(eventManager);
+        UserDAO userDAO = factory.getUserDAO(publisher);
+        LessonDAO lessonDAO = factory.getLessonDAO(publisher);
+        HomeworkDAO homeworkDAO = factory.getHomeworkDAO(publisher);
 
+        HomeworkNotifier homeworkNotifier = new HomeworkNotifier();
+        publisher.subscribeToAll("Homework", homeworkNotifier);
 
-        HomeworkListener homeworkListenerAdd = new HomeworkListener();
-        HomeworkListener homeworkListenerRemove = new HomeworkListener();
-        HomeworkListener homeworkListenerUpdate = new HomeworkListener();
+        LessonNotifier lessonNotifier = new LessonNotifier();
+        publisher.subscribeToAll("Lesson", lessonNotifier);
 
-        eventManager.subscribe("HomeworkAdded", homeworkListenerAdd);
-        eventManager.subscribe("HomeworkRemoved", homeworkListenerRemove);
-        eventManager.subscribe("HomeworkUpdated", homeworkListenerUpdate);
+        UserNotifier userNotifier = new UserNotifier();
+        publisher.subscribeToAll("User", userNotifier);
 
-        LessonListener lessonListenerAdd = new LessonListener();
-        LessonListener lessonListenerRemove = new LessonListener();
-        LessonListener lessonListenerUpdate = new LessonListener();
+        test(userDAO, lessonDAO, homeworkDAO);
 
-        eventManager.subscribe("LessonAdded", lessonListenerAdd);
-        eventManager.subscribe("LessonRemoved", lessonListenerRemove);
-        eventManager.subscribe("LessonUpdated", lessonListenerUpdate);
+        publisher.unsubscribe("LessonRemove", lessonNotifier);
+        publisher.unsubscribe("HomeworkRemove", homeworkNotifier);
 
-        UserListener userListenerAdd = new UserListener();
-        UserListener userListenerRemove = new UserListener();
-        UserListener userListenerUpdate = new UserListener();
+        test(userDAO, lessonDAO, homeworkDAO);
+    }
 
-        eventManager.subscribe("UserAdded", userListenerAdd);
-        eventManager.subscribe("UserRemoved", userListenerRemove);
-        eventManager.subscribe("UserUpdated", userListenerUpdate);
+    public static void writeUser(User user) {
+        // Виведення інформації у консоль
+        System.out.println("User 1:");
+        System.out.println("    Name: " + user.getName());
+        System.out.println("    Surname: " + user.getSurname());
+        System.out.println("    Phone: " + user.getPhone());
+        System.out.println("    Email: " + user.getEmail());
+        System.out.println("    Sex: " + user.getSex());
+        System.out.println("    Role: " + user.getRole());
+        System.out.println("    Password: " + user.getPassword());
+        System.out.println("\n    Lessons with Grades:");
 
+        for (Map.Entry<Lesson, Integer> entry : user.getLessonsWithGrade().entrySet()) {
+            Lesson lesson = entry.getKey();
+            int grade = entry.getValue();
+
+            System.out.println("        " + lesson.getName() + ":");
+            System.out.println("            Name: " + lesson.getName());
+            System.out.println("            Topic: " + lesson.getTopic());
+            System.out.println("            Date: " + lesson.getDate());
+            System.out.println("            Time Start: " + lesson.getTimeStart());
+            System.out.println("            Time End: " + lesson.getTimeEnd());
+            System.out.println("            CabNum: " + lesson.getCabNum());
+            System.out.println("            Homework:");
+            System.out.println("                Description: " + lesson.getHomework().getDescription());
+            System.out.println("                Due Date Time: " + lesson.getHomework().getDueDateTime());
+            System.out.println("            Grade: " + grade);
+        }
+    }
+
+    public static void test(UserDAO userDAO, LessonDAO lessonDAO, HomeworkDAO homeworkDAO){
         User user = new User.Builder()
                 .setName("John")
                 .setSurname("Doe")
@@ -197,36 +221,6 @@ public class Main {
         System.out.println("All Homeworks:");
         for (Homework h : homeworkList) {
             System.out.println(h);
-        }
-    }
-
-    public static void writeUser(User user) {
-        // Виведення інформації у консоль
-        System.out.println("User 1:");
-        System.out.println("    Name: " + user.getName());
-        System.out.println("    Surname: " + user.getSurname());
-        System.out.println("    Phone: " + user.getPhone());
-        System.out.println("    Email: " + user.getEmail());
-        System.out.println("    Sex: " + user.getSex());
-        System.out.println("    Role: " + user.getRole());
-        System.out.println("    Password: " + user.getPassword());
-        System.out.println("\n    Lessons with Grades:");
-
-        for (Map.Entry<Lesson, Integer> entry : user.getLessonsWithGrade().entrySet()) {
-            Lesson lesson = entry.getKey();
-            int grade = entry.getValue();
-
-            System.out.println("        " + lesson.getName() + ":");
-            System.out.println("            Name: " + lesson.getName());
-            System.out.println("            Topic: " + lesson.getTopic());
-            System.out.println("            Date: " + lesson.getDate());
-            System.out.println("            Time Start: " + lesson.getTimeStart());
-            System.out.println("            Time End: " + lesson.getTimeEnd());
-            System.out.println("            CabNum: " + lesson.getCabNum());
-            System.out.println("            Homework:");
-            System.out.println("                Description: " + lesson.getHomework().getDescription());
-            System.out.println("                Due Date Time: " + lesson.getHomework().getDueDateTime());
-            System.out.println("            Grade: " + grade);
         }
     }
 }

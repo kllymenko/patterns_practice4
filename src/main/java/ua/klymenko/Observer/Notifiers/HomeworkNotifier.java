@@ -1,21 +1,21 @@
-package ua.klymenko.DAO.EntityDAOImpl.Observer.Listeners;
+package ua.klymenko.Observer.Notifiers;
 
-import ua.klymenko.DAO.EntityDAOImpl.Observer.EventListener;
+import ua.klymenko.Observer.Observer;
 import ua.klymenko.entity.Homework;
 
-public class HomeworkListener implements EventListener<Homework> {
+public class HomeworkNotifier implements Observer<Homework> {
     @Override
-    public void update(Homework entity) {
+    public void onUpdate(Homework entity) {
         System.out.println("{{OBSERVER}} HOMEWORK UPDATED - " + entity);
     }
 
     @Override
-    public void remove(Homework entity) {
+    public void onRemove(Homework entity) {
         System.out.println("{{OBSERVER}} HOMEWORK REMOVED - " + entity);
     }
 
     @Override
-    public void add(Homework entity) {
+    public void onAdd(Homework entity) {
         System.out.println("{{OBSERVER}} HOMEWORK ADDED - " + entity);
     }
 }

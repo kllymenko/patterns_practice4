@@ -11,7 +11,7 @@ import ua.klymenko.DAO.EntityDAO.UserDAO;
 import ua.klymenko.DAO.EntityDAOImpl.MySQLHomeworkDAOImpl;
 import ua.klymenko.DAO.EntityDAOImpl.MySQLLessonDAOImpl;
 import ua.klymenko.DAO.EntityDAOImpl.MySQLUserDAOImpl;
-import ua.klymenko.DAO.EntityDAOImpl.Observer.EventManager;
+import ua.klymenko.Observer.Publisher;
 
 import java.sql.Connection;
 
@@ -26,20 +26,20 @@ public class DAOFactoryImpl implements DAOFactory{
 
 
     @Override
-    public UserDAO getUserDAO(EventManager eventManager) {
+    public UserDAO getUserDAO(Publisher publisher) {
         Connection connection = connectionManager.getConnection();
-        return new MySQLUserDAOImpl(connection, eventManager);
+        return new MySQLUserDAOImpl(connection, publisher);
     }
 
     @Override
-    public LessonDAO getLessonDAO(EventManager eventManager) {
+    public LessonDAO getLessonDAO(Publisher publisher) {
         Connection connection = connectionManager.getConnection();
-        return new MySQLLessonDAOImpl(connection, eventManager);
+        return new MySQLLessonDAOImpl(connection, publisher);
     }
 
     @Override
-    public HomeworkDAO getHomeworkDAO(EventManager eventManager) {
+    public HomeworkDAO getHomeworkDAO(Publisher publisher) {
         Connection connection = connectionManager.getConnection();
-        return new MySQLHomeworkDAOImpl(connection, eventManager);
+        return new MySQLHomeworkDAOImpl(connection, publisher);
     }
 }

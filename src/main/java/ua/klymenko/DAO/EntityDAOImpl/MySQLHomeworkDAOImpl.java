@@ -1,7 +1,7 @@
 package ua.klymenko.DAO.EntityDAOImpl;
 
 import ua.klymenko.DAO.EntityDAO.HomeworkDAO;
-import ua.klymenko.DAO.EntityDAOImpl.Observer.EventManager;
+import ua.klymenko.Observer.Publisher;
 import ua.klymenko.entity.Homework;
 
 import java.sql.*;
@@ -17,11 +17,11 @@ public class MySQLHomeworkDAOImpl implements HomeworkDAO {
     private static final String GET_ALL_HOMEWORKS = "SELECT * FROM school.homework";
     private static final String UPDATE_DUE_DATE_TIME = "UPDATE school.homework SET due_datetime=? WHERE homework_id=?";
     private final Connection con;
-    private final EventManager eventManager;
+    private final Publisher publisher;
 
-    public MySQLHomeworkDAOImpl(Connection connection, EventManager eventManager) {
+    public MySQLHomeworkDAOImpl(Connection connection, Publisher publisher) {
         con = connection;
-        this.eventManager = eventManager;
+        this.publisher = publisher;
     }
 
 
@@ -37,7 +37,7 @@ public class MySQLHomeworkDAOImpl implements HomeworkDAO {
             if (generatedKeys.next()) {
                 entity.setHomeworkId(String.valueOf(generatedKeys.getInt(1)));
             }
-            eventManager.notifyEntityAdded("HomeworkAdded", entity);
+            publisher.notifyAdd("HomeworkAdd", entity);
         } catch (SQLException ex) {
             throw new RuntimeException("Error inserting Homework", ex);
         }
@@ -54,7 +54,7 @@ public class MySQLHomeworkDAOImpl implements HomeworkDAO {
             int rowsAffected = ps.executeUpdate();
 
             if (rowsAffected > 0) {
-                eventManager.notifyEntityUpdated("HomeworkUpdated", entity);
+                publisher.notifyUpdate("HomeworkUpdate", entity);
             }
 
             return rowsAffected > 0;
@@ -72,7 +72,7 @@ public class MySQLHomeworkDAOImpl implements HomeworkDAO {
             int rowsAffected = ps.executeUpdate();
 
             if (rowsAffected > 0 && deletedHomework != null) {
-                eventManager.notifyEntityRemoved("HomeworkRemoved", deletedHomework);
+                publisher.notifyRemove("HomeworkRemove", deletedHomework);
             }
 
             return rowsAffected > 0;
@@ -125,7 +125,7 @@ public class MySQLHomeworkDAOImpl implements HomeworkDAO {
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected > 0) {
-                eventManager.notifyEntityUpdated("HomeworkUpdated", entity);
+                publisher.notifyUpdate("HomeworkUpdate", entity);
             }
             return rowsAffected > 0;
         } catch (SQLException e) {

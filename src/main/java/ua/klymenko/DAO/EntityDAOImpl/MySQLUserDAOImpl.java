@@ -2,7 +2,7 @@ package ua.klymenko.DAO.EntityDAOImpl;
 
 
 import ua.klymenko.DAO.EntityDAO.UserDAO;
-import ua.klymenko.DAO.EntityDAOImpl.Observer.EventManager;
+import ua.klymenko.Observer.Publisher;
 import ua.klymenko.entity.Homework;
 import ua.klymenko.entity.Lesson;
 import ua.klymenko.entity.User;
@@ -28,11 +28,11 @@ public class MySQLUserDAOImpl implements UserDAO {
     private static final String DELETE = "CALL DeleteUserAndSchedule(?)";
 
     private final Connection con;
-    private final EventManager eventManager;
+    private final Publisher publisher;
 
-    public MySQLUserDAOImpl(Connection connection, EventManager eventManager) {
+    public MySQLUserDAOImpl(Connection connection, Publisher publisher) {
         con = connection;
-        this.eventManager = eventManager;
+        this.publisher = publisher;
     }
 
     @Override
@@ -119,7 +119,7 @@ public class MySQLUserDAOImpl implements UserDAO {
                         }
                     }
                     con.commit();
-                    eventManager.notifyEntityAdded("UserAdded", entity);
+                    publisher.notifyAdd("UserAdd", entity);
                 }
             } catch (SQLException ex) {
                 try {
@@ -156,7 +156,7 @@ public class MySQLUserDAOImpl implements UserDAO {
             ps.setInt(++k, Integer.parseInt(entity.getUserId()));
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected > 0) {
-                eventManager.notifyEntityUpdated("UserUpdated", entity);
+                publisher.notifyUpdate("UserUpdate", entity);
             }
             return rowsAffected > 0;
         } catch (SQLException e) {
@@ -171,7 +171,7 @@ public class MySQLUserDAOImpl implements UserDAO {
             ps.setInt(1, Integer.parseInt(id));
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected > 0 && deletedUser != null) {
-                eventManager.notifyEntityRemoved("UserRemoved", deletedUser);
+                publisher.notifyRemove("UserRemove", deletedUser);
             }
             return rowsAffected > 0;
         } catch (SQLException e) {
@@ -217,7 +217,7 @@ public class MySQLUserDAOImpl implements UserDAO {
             ps.setInt(++k, Integer.parseInt(entity.getUserId()));
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected > 0) {
-                eventManager.notifyEntityUpdated("UserUpdated", entity);
+                publisher.notifyUpdate("UserUpdate", entity);
             }
             return rowsAffected > 0;
         } catch (SQLException e) {

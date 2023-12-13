@@ -5,7 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b28f484-47c1-43f1-8714-c74ae730dd28" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Observer/Observer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Observer/Publisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/MySQLHomeworkDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/MySQLHomeworkDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/MySQLLessonDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/MySQLLessonDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/MySQLUserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/MySQLUserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/Observer/EventListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/Observer/EventManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/Observer/Listeners/HomeworkListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Observer/Notifiers/HomeworkNotifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/Observer/Listeners/LessonListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Observer/Notifiers/LessonNotifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/Observer/Listeners/UserListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Observer/Notifiers/UserNotifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/Factory/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/Factory/DAOFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/Factory/DAOFactoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/Factory/DAOFactoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +39,13 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -39,7 +58,13 @@
       <option name="presentableId" value="Default" />
       <updated>1702465121200</updated>
       <workItem from="1702465122500" duration="1000" />
+      <workItem from="1702465403259" duration="110000" />
+      <workItem from="1702465893160" duration="571000" />
+      <workItem from="1702483940137" duration="3294000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

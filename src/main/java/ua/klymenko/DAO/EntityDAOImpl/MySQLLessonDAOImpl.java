@@ -2,7 +2,7 @@ package ua.klymenko.DAO.EntityDAOImpl;
 
 
 import ua.klymenko.DAO.EntityDAO.LessonDAO;
-import ua.klymenko.DAO.EntityDAOImpl.Observer.EventManager;
+import ua.klymenko.Observer.Publisher;
 import ua.klymenko.entity.Homework;
 import ua.klymenko.entity.Lesson;
 
@@ -22,11 +22,11 @@ public class MySQLLessonDAOImpl implements LessonDAO {
     public static final String UPDATE_LESSON = "UPDATE school.lesson SET name = ?, date = ?, time_start = ?, time_end = ?, cab_num = ?, topic = ? WHERE lesson_id = ?;";
 
     private final Connection con;
-    private final EventManager eventManager;
+    private final Publisher publisher;
 
-    public MySQLLessonDAOImpl(Connection connection, EventManager eventManager) {
+    public MySQLLessonDAOImpl(Connection connection, Publisher publisher) {
         con = connection;
-        this.eventManager = eventManager;
+        this.publisher = publisher;
     }
 
 
@@ -59,7 +59,7 @@ public class MySQLLessonDAOImpl implements LessonDAO {
                 }
             }
             con.commit();
-            eventManager.notifyEntityAdded("LessonAdded", entity);
+            publisher.notifyAdd("LessonAdd", entity);
         } catch (SQLException ex) {
             try {
                 con.rollback();
@@ -101,7 +101,7 @@ public class MySQLLessonDAOImpl implements LessonDAO {
 
                         con.commit();
                         if (updatedLessonRows > 0) {
-                            eventManager.notifyEntityUpdated("LessonUpdated", entity);
+                            publisher.notifyUpdate("LessonUpdate", entity);
                         }
                         return updatedLessonRows > 0;
                     }
@@ -132,7 +132,7 @@ public class MySQLLessonDAOImpl implements LessonDAO {
             int deletedLessonRows = psDeleteLesson.executeUpdate();
 
             if (deletedLessonRows > 0 && deletedLesson != null) {
-                eventManager.notifyEntityRemoved("LessonRemoved", deletedLesson);
+                publisher.notifyRemove("LessonRemove", deletedLesson);
             }
             return deletedLessonRows > 0;
 
@@ -184,7 +184,7 @@ public class MySQLLessonDAOImpl implements LessonDAO {
             psUpdateLessonName.setInt(2, Integer.parseInt(entity.getLessonId()));
             int updatedLessonRows = psUpdateLessonName.executeUpdate();
             if (updatedLessonRows > 0) {
-                eventManager.notifyEntityUpdated("LessonUpdated", entity);
+                publisher.notifyUpdate("LessonUpdate", entity);
             }
             return updatedLessonRows > 0;
         } catch (SQLException ex) {
