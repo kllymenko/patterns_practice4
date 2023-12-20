@@ -36,8 +36,8 @@ public class MySQLHomeworkDAOImpl implements HomeworkDAO {
             ResultSet generatedKeys = ps.getGeneratedKeys();
             if (generatedKeys.next()) {
                 entity.setHomeworkId(String.valueOf(generatedKeys.getInt(1)));
+                publisher.notifyAdd("HomeworkAdd", entity);
             }
-            publisher.notifyAdd("HomeworkAdd", entity);
         } catch (SQLException ex) {
             throw new RuntimeException("Error inserting Homework", ex);
         }

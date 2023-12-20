@@ -11,11 +11,13 @@ public class Publisher {
     public <T> void subscribe(String eventType, Observer listener) {
         listeners.computeIfAbsent(eventType, k -> new ArrayList<>()).add(listener);
     }
+
     public <T> void subscribeToAll(String eventType, Observer<T> listener) {
         subscribe(eventType + "Add", listener);
         subscribe(eventType + "Remove", listener);
         subscribe(eventType + "Update", listener);
     }
+
     public <T> void unsubscribe(String eventType, Observer<T> listener) {
         listeners.getOrDefault(eventType, new ArrayList<>()).remove(listener);
     }
@@ -23,22 +25,28 @@ public class Publisher {
 
     public <T> void notifyAdd(String eventType, T entity) {
         List<Observer<?>> observers = listeners.get(eventType);
-        for (Observer<?> listener : observers) {
-            ((Observer<T>) listener).onAdd(entity);
+        if (observers != null) {
+            for (Observer<?> listener : observers) {
+                ((Observer<T>) listener).onAdd(entity);
+            }
         }
     }
 
     public <T> void notifyRemove(String eventType, T entity) {
         List<Observer<?>> observers = listeners.get(eventType);
-        for (Observer<?> listener : observers) {
-            ((Observer<T>) listener).onRemove(entity);
+        if (observers != null) {
+            for (Observer<?> listener : observers) {
+                ((Observer<T>) listener).onRemove(entity);
+            }
         }
     }
 
     public <T> void notifyUpdate(String eventType, T entity) {
         List<Observer<?>> observers = listeners.get(eventType);
-        for (Observer<?> listener : observers) {
-            ((Observer<T>) listener).onUpdate(entity);
+        if (observers != null) {
+            for (Observer<?> listener : observers) {
+                ((Observer<T>) listener).onUpdate(entity);
+            }
         }
     }
 }

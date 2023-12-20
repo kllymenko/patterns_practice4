@@ -4,27 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b28f484-47c1-43f1-8714-c74ae730dd28" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Observer/Observer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Observer/Publisher.java" afterDir="false" />
+    <list default="true" id="2b28f484-47c1-43f1-8714-c74ae730dd28" name="Changes" comment="PZ-2">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Memento/HomeworkCaretaker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Memento/MementoManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/MySQLHomeworkDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/MySQLHomeworkDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/MySQLLessonDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/MySQLLessonDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/MySQLUserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/MySQLUserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/Observer/EventListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/Observer/EventManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/Observer/Listeners/HomeworkListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Observer/Notifiers/HomeworkNotifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/Observer/Listeners/LessonListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Observer/Notifiers/LessonNotifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/EntityDAOImpl/Observer/Listeners/UserListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Observer/Notifiers/UserNotifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/Factory/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/Factory/DAOFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/Factory/DAOFactoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/DAO/Factory/DAOFactoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/Observer/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/Observer/Publisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/klymenko/entity/Homework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/klymenko/entity/Homework.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,20 +36,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/alexk/IdeaProjects/patterns_practice3&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.notifications&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="patterns_practice2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="patterns_practice2" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -60,11 +82,33 @@
       <workItem from="1702465122500" duration="1000" />
       <workItem from="1702465403259" duration="110000" />
       <workItem from="1702465893160" duration="571000" />
-      <workItem from="1702483940137" duration="3294000" />
+      <workItem from="1702483940137" duration="3468000" />
+      <workItem from="1702545128819" duration="10000" />
+      <workItem from="1702935819830" duration="1454000" />
+      <workItem from="1703070868985" duration="2999000" />
+      <workItem from="1703073958259" duration="2403000" />
+      <workItem from="1703080302413" duration="3594000" />
     </task>
+    <task id="LOCAL-00001" summary="PZ-2">
+      <option name="closed" value="true" />
+      <created>1702487351649</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1702487351649</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="PZ-2" />
+    <option name="LAST_COMMIT_MESSAGE" value="PZ-2" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
